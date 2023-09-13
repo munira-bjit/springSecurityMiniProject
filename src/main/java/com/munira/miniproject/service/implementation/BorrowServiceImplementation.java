@@ -75,7 +75,7 @@ public class BorrowServiceImplementation implements BorrowService {
         UserEntity userEntity = userRepository.findByUserId(userId);
         BookEntity bookEntity = bookRepository.findByBookId(bookId);
 
-        if(bookEntity.isDeleted() || bookEntity == null)
+        if(bookEntity == null || bookEntity.isDeleted() )
             throw new BookNotFoundException("Book does not exist!!");
 
         BorrowEntity borrowEntity = borrowRepository.findByUserEntityAndBookEntityAndReturnDateIsNull(userEntity,bookEntity);

@@ -8,11 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ReserveRepository extends JpaRepository<ReserveEntity, Long> {
-
-//    ReserveEntity findByBookEntity(BookEntity bookEntity);
-//    List<ReserveEntity> findAllByBookEntityAndDeletedFalse(BookEntity bookEntity);
-
     List<ReserveEntity> findAllByBookEntityAndReserveStatus(BookEntity bookEntity, String pending);
-
     ReserveEntity findByUserEntityAndBookEntityAndReserveStatus(UserEntity userEntity, BookEntity bookEntity, String pending);
 }
